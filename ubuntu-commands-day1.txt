@@ -1,0 +1,59 @@
+    1  clear
+    2  sudo apt update
+    3  sudo add-apt-repository universe
+    4  sudo add-apt-repository -y ppa:openjdk-r/ppa
+    5  sudo apt update
+    6  sudo wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
+    7  echo 'deb https://debian.neo4j.com stable 4.1' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
+    8  sudo apt update 
+    9  sudo apt install -y neo4j-enterprise=1:4.1.3
+   10  history 
+   11  sudo systemctl start neo4j
+   12  curl localhost:7474
+   13  curl yahoo.com
+   14  sudo vim /etc/neo4j/neo4j.conf
+   15  sudo systemctl stop neo4j
+   16  sudo systemctl restart neo4j
+   17  sudo usermod -aG sudo neo4j
+   18  sudo passwd neo4j
+   19  sudo neo4j-admin set-initial-password secret
+   20  history 
+   21  curl localhost:7474
+   22  sudo vim /etc/neo4j/neo4j.conf
+   23  sudo apt install software-properties-common
+   24  apt-add-repository -y ppa:libreoffice/ppa
+   25  sudo apt update && sudo apt install libreoffice
+   26  sudo apt update && sudo apt install libreofficesudo apt install software-properties-common
+   27  sudo apt install software-properties-common
+   28  apt-add-repository -y ppa:libreoffice/ppa
+   29  sudo apt-add-repository -y ppa:libreoffice/ppa
+   30  sudo apt update && sudo apt install libreoffice
+   31  sudo apt -y update && sudo apt -y install python3-uno unoconv
+   32  cd Trainer/
+   33  for f in *.pptx ; do unoconv -f pdf "$f"; done
+   34  zip allpdf *.pdf
+   35  sudo apt install zip
+   36  sudo apt install -Y  zip
+   37  sudo apt install -y  zip
+   38  zip allpdf *.pdf
+   39  s
+   40  ls
+   41  pip install notedown
+   42  pip install notedownsudo apt install python-pip
+   43  sudo apt install python-pip
+   44  sudo apt install -y python3-venv
+   45  pip install -y virtualenv
+   46  pip install  virtualenv
+   47  python3 -m venv ~/mypythonvenv
+   48  source ~/mypythonvenv/bin/activate
+   49  pip install notedown
+   50  pip install jupyter
+   51  sudo systemctl enable neo4j
+   52  sudo systemctl start neo4j
+   53  sudo systemctl status neo4j
+   54  history 
+   55  history > day1.txt
+   56  rm day1.txt 
+   57  rm *
+   58  ls
+   59  history > ~/day1.txt
