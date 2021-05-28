@@ -46,10 +46,10 @@ RETURN query, queryId;
 ## Monitoring connections
 - Can view the current connections to a Neo4j instance from cypher-shell
 ```
-Call dbms.listConnections();
+> Call dbms.listConnections();
 ```
 
 - Terminate the connection
 ```
-dbms.killConnection()
+> CALL dbms.killConnection("bolt-20")
 ```
