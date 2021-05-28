@@ -10,6 +10,9 @@ create database atindb
 SHOW DATABASES
 ```
 
+```
+:dbs
+```
 
 ```
 DROP DATABASE atindb
