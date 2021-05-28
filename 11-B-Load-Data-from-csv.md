@@ -10,9 +10,9 @@
 ## Create a blank database:
 ```
 :USE system
-CREATE DATABASE atindb_music
+CREATE DATABASE atindbmusic
 SHOW DATABASES
-:USE atindb_music
+:USE atindbmusic
 CALL db.schema.visualization()
 ```
 
