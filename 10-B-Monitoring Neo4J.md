@@ -1,9 +1,10 @@
 # Monitoring Neo4J
 
 ## Create some nodes
+- Connect to Ubuntu Console and run below commands:
 ```
 cypher-shell -u neo4j -p secret -d neo4j --format plain
-> :use neo4j;
+> :use neo4j;
 > MATCH (n) DETACH DELETE n;
 ```
 
@@ -19,10 +20,10 @@ cypher-shell -u neo4j -p secret -d neo4j --format plain
 
 - Execute a query that runs for longer than 1000 ms
 ```
-MATCH (a), (b), (c), (d) RETURN count(id(a));
+> MATCH (a), (b), (c), (d) RETURN count(id(a));
 ```
 
-- Viewing currently running queries
+- On Browser: Viewing currently running queries
 ```
 :queries
 ```
@@ -32,13 +33,14 @@ MATCH (a), (b), (c), (d) RETURN count(id(a));
 
 ## Automating monitoring of queries
 - Automate the killing of long-running queries
+- On Browser, run:
 ```
-CALL dbms.listQueries() YIELD query, elapsedTimeMillis, queryId, username
-WHERE  NOT query CONTAINS toLower('LOAD')
-AND elapsedTimeMillis > 1000
-WITH query, collect(queryId) AS q
-CALL dbms.killQueries(q) YIELD queryId
-RETURN query, queryId;
+CALL dbms.listQueries() YIELD query, elapsedTimeMillis, queryId, username
+WHERE  NOT query CONTAINS toLower('LOAD')
+AND elapsedTimeMillis > 1000
+WITH query, collect(queryId) AS q
+CALL dbms.killQueries(q) YIELD queryId
+RETURN query, queryId;
 ```
 
 ## Monitoring connections
