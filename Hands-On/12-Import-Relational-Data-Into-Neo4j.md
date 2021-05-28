@@ -37,6 +37,16 @@
   - Take the data from the relational tables and put it in another format for loading to the graph
 
 ## Importing the Data using Cypher
+
+### Create a blank database:
+```
+:USE system
+CREATE DATABASE atin_northwind
+SHOW DATABASES
+:USE atin_northwind
+CALL db.schema.visualization()
+```
+
 ### Creating Order nodes
 ```
 // Create orders
@@ -255,4 +265,9 @@ RETURN s, r1, p, r2, c;
 ```
 MATCH (e:Employee)<-[:REPORTS_TO]-(sub)
 RETURN e.employeeID AS manager, sub.employeeID AS employee;
+```
+
+## Review the schema
+```
+CALL db.schema.visualization()
 ```
