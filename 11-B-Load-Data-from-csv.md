@@ -156,7 +156,7 @@ carrieanne,"Trinity",tt0242653,ACTED_IN
  - Paths to node data is defined with the --nodes option.
  - Paths to relationship data is defined with the --relationships option.
 ```
-bin/neo4j-admin import --database=<database_name> --nodes=import/movies.csv --nodes=import/actors.csv --relationships=import/roles.csv
+neo4j-admin import --database=<database_name> --nodes=import/movies.csv --nodes=import/actors.csv --relationships=import/roles.csv
 ```
 
 - Query the data
@@ -209,7 +209,7 @@ carrieanne,"Trinity",tt0242653,ACTED_IN
 
 - Importing the data
 ```
-bin/neo4j-admin import --database=neo4j --nodes=import/movies3-header.csv,import/movies3.csv --nodes=import/actors3-header.csv,import/actors3.csv --relationships=import/roles3-header.csv,import/roles3.csv
+neo4j-admin import --database=neo4j --nodes=import/movies3-header.csv,import/movies3.csv --nodes=import/actors3-header.csv,import/actors3.csv --relationships=import/roles3-header.csv,import/roles3.csv
 ```
 
 ### Multiple input files
@@ -271,5 +271,5 @@ carrieanne,"Trinity",tt0242653,ACTED_IN
 
 ### Importing the data
 ```
-bin/neo4j-admin import --database=neo4j --nodes="import/movies4-header.csv,import/movies4-part.*" --nodes="import/actors4-header.csv,import/actors4-part.*" --relationships="import/roles4-header.csv,import/roles4-part.*"
+neo4j-admin import --database=neo4j --nodes="import/movies4-header.csv,import/movies4-part.*" --nodes="import/actors4-header.csv,import/actors4-part.*" --relationships="import/roles4-header.csv,import/roles4-part.*"
 ```
