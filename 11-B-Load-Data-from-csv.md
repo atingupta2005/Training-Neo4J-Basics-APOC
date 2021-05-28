@@ -152,11 +152,22 @@ carrieanne,"Trinity",tt0234215,ACTED_IN
 carrieanne,"Trinity",tt0242653,ACTED_IN
 ```
 
+- Create New Database from Browser
+```
+:use system
+create database atindbimport
+:use atindbimport
+```
+
 - Importing the data
  - Paths to node data is defined with the --nodes option.
  - Paths to relationship data is defined with the --relationships option.
 ```
-neo4j-admin import --database=<database_name> --nodes=import/movies.csv --nodes=import/actors.csv --relationships=import/roles.csv
+cd /tmp
+wget https://github.com/atingupta2005/Training-Neo4J-Basics-APOC/raw/master/data/Data-Load-Data-from-csv.zip
+cd /var/lib/neo4j/import
+sudo unzip /tmp/Data-Load-Data-from-csv.zip .
+sudo neo4j-admin import --database=atindbimport --nodes=./movies.csv --nodes=./actors.csv --relationships=./roles.csv
 ```
 
 - Query the data

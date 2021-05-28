@@ -1,7 +1,8 @@
 # Import Relational Data Into Neo4j
 ## About the Data Domain
  - We will be using the NorthWind dataset, an often-used SQL dataset.
-  - https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg
+ <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg">
+
 - We can narrow our model down to these essential entities.
   - https://dist.neo4j.com/wp-content/uploads/Northwind_diagram_focus.jpg
 
