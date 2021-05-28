@@ -24,3 +24,20 @@ apoc.import.file.enabled=true
 //Save and quit the file
 sudo systemctl restart neo4j
 ```
+
+## Help
+```
+CALL apoc.help("apoc")
+```
+```
+CALL apoc.help("apoc.algo")
+```
+
+## apoc.load.json
+- With apoc.load.json, it’s now very easy to load JSON data from any file or URL.
+```
+WITH "https://api.stackexchange.com/2.2/questions?pagesize=100&order=desc&sort=creation&tagged=neo4j&site=stackoverflow&filter=!5-i6Zw8Y)4W7vpy91PMYsKM-k9yzEsSC1_Uxlf" AS url
+CALL apoc.load.json(url) YIELD value
+UNWIND value.items AS item
+RETURN item.title, item.owner, item.creation_date, keys(item)
+```
