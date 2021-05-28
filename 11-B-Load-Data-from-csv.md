@@ -99,41 +99,10 @@ CREATE (:Track { TrackId: line.Id, Name: line.Track, Length: line.Length})
   - Using PERIODIC COMMIT instructs Neo4j to commit the data after a certain number of rows.
   - The default is 1000 rows, so the data will be committed every thousand rows.
 ```
-USING PERIODIC COMMIT 800
+:auto USING PERIODIC COMMIT 800
 LOAD CSV WITH HEADERS FROM 'https://www.quackit.com/neo4j/tutorial/tracks.csv' AS line
 CREATE (:Track { TrackId: line.Id, Name: line.Track, Length: line.Length})
 ```
-
-
-#### Example for importing MovieGraph
-- Load the data from the persons.csv file
-```
-LOAD CSV WITH HEADERS FROM "file:///persons.csv" AS csvLine
-CREATE (p:Person {id: toInteger(csvLine.id), name: csvLine.name})
-```
-
-- Load the data from the movies.csv file
-```
-LOAD CSV WITH HEADERS FROM "file:///movies.csv" AS csvLine
-MERGE (country:Country {name: csvLine.country})
-CREATE (movie:Movie {id: toInteger(csvLine.id), title: csvLine.title, year:toInteger(csvLine.year)})
-CREATE (movie)-[:ORIGIN]->(country)
-```
-
-- Load the data from the roles.csv file
-```
-USING PERIODIC COMMIT 500
-LOAD CSV WITH HEADERS FROM "file:///roles.csv" AS csvLine
-MATCH (person:Person {id: toInteger(csvLine.personId)}), (movie:Movie {id: toInteger(csvLine.movieId)})
-CREATE (person)-[:ACTED_IN {role: csvLine.role}]->(movie)
-```
-
-- Validate the imported data
-```
-MATCH (n)-[r]->(m) RETURN n, r, m
-```
-
-
 
 ## neo4j-admin bulk import tool
 - The neo4j-admin import tool allows you to import CSV data to an empty database by specifying node files and relationship files.
