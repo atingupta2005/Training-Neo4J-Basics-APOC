@@ -62,7 +62,7 @@ Id,Name,Location,Email,BusinessType
 - Here are some examples of importing this data.
 ```
 //skip null values
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/atingupta2005/Training-Neo4J-Basics-APOC/master/companies.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/atingupta2005/Training-Neo4J-Basics-APOC/master/data/companies.csv' AS row
 WITH row WHERE row.Id IS NOT NULL
 MERGE (c:Company {companyId: row.Id});
 //Show Data
@@ -70,7 +70,7 @@ MATCH (n:Company) return n;
 // clear data
 MATCH (n:Company) DELETE n;
 //set default for null values
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/atingupta2005/Training-Neo4J-Basics-APOC/master/companies.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/atingupta2005/Training-Neo4J-Basics-APOC/master/data/companies.csv' AS row
 MERGE (c:Company {companyId: row.Id, hqLocation: coalesce(row.Location, "Unknown")})
 MATCH (n:Company) return n;
 ```
