@@ -1,11 +1,10 @@
 # Import Relational Data Into Neo4j
-## About the Data Domain
+### About the Data Domain
  - We will be using the NorthWind dataset, an often-used SQL dataset.
-  - <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg"><br />
+  - <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg"><br /><br />
 
-
-- We can narrow our model down to these essential entities.
-  - <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram_focus.jpg"><br />
+### We can narrow our model down to these essential entities.
+  - <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram_focus.jpg"><br /><br />
 
 ## Developing a Graph Model
 - When deriving a graph model from a relational model, you should keep a couple of general guidelines in mind.
@@ -28,14 +27,16 @@
   - Join between Employees and itself (unary relationship) becomes a relationship named REPORTS_TO (where employees have a manager).
   - Join with join table (Order Details) between Orders and Products becomes a relationship named CONTAINS with properties of unitPrice, quantity, and discount (where order contains a product).
 
-- If we draw our translation out on the whiteboard, we have this graph data model.
-<img align="left" src="https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg"><br />
 
-- How does the Graph Model Differ from the Relational Model?
+### If we draw our translation out on the whiteboard, we have this graph data model.
+<img align="left" src="https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg"><br />
+<br />
+
+### How does the Graph Model Differ from the Relational Model?
   - There are no nulls
   - It describes the relationships in more detail
 
-- Exporting Relational Tables to CSV
+### Exporting Relational Tables to CSV
   - Take the data from the relational tables and put it in another format for loading to the graph
 
 ## Importing the Data using Cypher
