@@ -44,9 +44,9 @@
 ### Create a blank database:
 ```
 :USE system
-CREATE DATABASE atin_northwind
+CREATE DATABASE atinnorthwind
 SHOW DATABASES
-:USE atin_northwind
+:USE atinnorthwind
 CALL db.schema.visualization()
 ```
 
