@@ -30,7 +30,7 @@
 
 ### If we draw our translation out on the whiteboard, we have this graph data model.
 <img align="left" src="https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg"><br />
-<br />
+<br /><br /><br /><br /><br /><br />
 
 ### How does the Graph Model Differ from the Relational Model?
   - There are no nulls
