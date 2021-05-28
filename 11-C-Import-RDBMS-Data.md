@@ -3,8 +3,9 @@
  - We will be using the NorthWind dataset, an often-used SQL dataset.
  <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg">
 
+
 - We can narrow our model down to these essential entities.
-  - https://dist.neo4j.com/wp-content/uploads/Northwind_diagram_focus.jpg
+  - <img align="left" src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram_focus.jpg">
 
 ## Developing a Graph Model
 - When deriving a graph model from a relational model, you should keep a couple of general guidelines in mind.
@@ -28,7 +29,7 @@
   - Join with join table (Order Details) between Orders and Products becomes a relationship named CONTAINS with properties of unitPrice, quantity, and discount (where order contains a product).
 
 - If we draw our translation out on the whiteboard, we have this graph data model.
-  - https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg
+<img align="left" src="https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg">
 
 - How does the Graph Model Differ from the Relational Model?
   - There are no nulls
