@@ -108,30 +108,3 @@ MATCH (c2:Loc { name: 'F' })
 CALL apoc.algo.dijkstra(c1, c2, 'ROAD', 'distance') YIELD path, weight
 RETURN path, weight
 ```
-
-## Page Rank Algorithms
- - Let’s create some test data to run the PageRank algorithm on.
-```
-FOREACH (id IN range(0,1000) | CREATE (:Node {id:id}))
-```
-
-```
-MATCH (n1:Node),(n2:Node) WITH n1,n2 LIMIT 1000000 WHERE rand() < 0.1
-CREATE (n1)-[:KNOWS]->(n2)
-```
-
-- PageRank Procedure
-  - PageRank is an algorithm used by Google Search to rank websites in their search engine results.
-  - It is a way of measuring the importance of nodes in a graph.
-  - PageRank counts the number and quality of relationships to a node to approximate the importance of that node.
-  - PageRank assumes that more important nodes likely have more relationships.
-
-```
-MATCH (node:Node)
-WHERE node.id %2 = 0
-WITH collect(node) AS nodes
-// compute over relationships of all types
-CALL apoc.algo.pageRank(nodes) YIELD node, score
-RETURN node, score
-ORDER BY score DESC
-```

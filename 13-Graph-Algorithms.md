@@ -58,7 +58,7 @@ match (p:Person)-[LIKES]- (i:Instrument) return p, i
 - The following statement will create the graph and store it in the graph catalog
 ```
 CALL gds.graph.create(
-    'myGraph1',
+    'myGraphNodeSimilarity',
     ['Person', 'Instrument'],
     {
         LIKES: {
@@ -71,12 +71,12 @@ CALL gds.graph.create(
             }
         }
     }
-);
+)
 ````
 
 - Match the similarity between Persons
 ```
-CALL gds.nodeSimilarity.stream('myGraph1')
+CALL gds.nodeSimilarity.stream('myGraphNodeSimilarity')
 YIELD node1, node2, similarity
 RETURN gds.util.asNode(node1).name AS Person1, gds.util.asNode(node2).name AS Person2, similarity
 ORDER BY similarity DESCENDING, Person1, Person2
@@ -111,7 +111,7 @@ match (n:User) return n
 - The following statement will create a graph using a reverse projection and store it in the graph catalog under the name 'myGraph'.
 ```
 CALL gds.graph.create(
-  'myGraph2',
+  'myGraphDegreeOfCentrality',
   'User',
   {
     FOLLOWS: {
@@ -125,7 +125,7 @@ CALL gds.graph.create(
 - Now show the Degree of Centrality
 ```
 CALL gds.degree.stream(
-   'myGraph2',
+   'myGraphDegreeOfCentrality',
    { relationshipWeightProperty: 'score' }
 )
 YIELD nodeId, score
@@ -140,6 +140,7 @@ ORDER BY weightedFollowers DESC, name DESC
 
 - Create Data
 ```
+match (n:User) DETACH DELETE n
 CREATE
   (alice:User {name: 'Alice'}),
   (bob:User {name: 'Bob'}),
@@ -164,12 +165,13 @@ match (n:User) return n
 
 - Create and Save Graph
 ```
-CALL gds.graph.create('myGraph5', 'User', 'FOLLOWS')
+gds.graph.drop("BetweennessCentrality")
+CALL gds.graph.create('BetweennessCentrality', 'User', 'FOLLOWS')
 ```
 
 - Call Betweenness Algorithm
 ```
-CALL gds.betweenness.stream('myGraph5')
+CALL gds.betweenness.stream('BetweennessCentrality')
 YIELD nodeId, score
 RETURN gds.util.asNode(nodeId).name AS name, score
 ORDER BY name ASC
