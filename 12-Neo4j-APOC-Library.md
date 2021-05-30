@@ -54,6 +54,42 @@ MERGE (p:Person {name:person.name})
 match (p:Person) return p
 ```
 
+## APOC Text functions
+```
+match (n) return apoc.text.toUpperCase(n.name)
+```
+
+```
+match (n) return apoc.text.replace(n.name, "H", "A")
+```
+
+```
+match (n) return apoc.text.capitalize(n.name)
+```
+
+```
+match (n) return apoc.text.swapCase(n.name)
+```
+
+```
+match (n) return apoc.text.camelCase(n.name)
+```
+
+```
+match (n) return apoc.text.charAt(n.name, 4)
+```
+
+```
+match (n) return apoc.text.capitalize(n.name)
+```
+
+```
+match (n) return apoc.text.toInteger(n.salary)
+```
+
+```
+match (n) return apoc.text.toString(n.salary)
+```
 
 ## Dijkstra Algorithms
 ### Shortest Path Finder
