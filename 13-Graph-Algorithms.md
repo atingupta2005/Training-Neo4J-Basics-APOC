@@ -27,6 +27,13 @@ RETURN gds.version()
 CALL gds.list()
 ```
 
+## Create Database
+```
+:use system
+CREATE DATABASE atingraphdb
+:use atingraphdb
+```
+
 ## Node Similarity
 - Create Data
 ```
@@ -57,6 +64,8 @@ match (p:Person)-[LIKES]- (i:Instrument) return p, i
 
 - The following statement will create the graph and store it in the graph catalog
 ```
+CALL gds.graph.list
+CALL gds.graph.drop("myGraphNodeSimilarity")
 CALL gds.graph.create(
     'myGraphNodeSimilarity',
     ['Person', 'Instrument'],
@@ -110,6 +119,8 @@ match (n:User) return n
 
 - The following statement will create a graph using a reverse projection and store it in the graph catalog under the name 'myGraph'.
 ```
+CALL gds.graph.list
+CALL gds.graph.drop("myGraphDegreeOfCentrality")
 CALL gds.graph.create(
   'myGraphDegreeOfCentrality',
   'User',
@@ -165,7 +176,8 @@ match (n:User) return n
 
 - Create and Save Graph
 ```
-gds.graph.drop("BetweennessCentrality")
+CALL gds.graph.list
+CALL gds.graph.drop("BetweennessCentrality")
 CALL gds.graph.create('BetweennessCentrality', 'User', 'FOLLOWS')
 ```
 
@@ -174,7 +186,7 @@ CALL gds.graph.create('BetweennessCentrality', 'User', 'FOLLOWS')
 CALL gds.betweenness.stream('BetweennessCentrality')
 YIELD nodeId, score
 RETURN gds.util.asNode(nodeId).name AS name, score
-ORDER BY name ASC
+ORDER BY score DESC
 ```
 
 
@@ -183,6 +195,7 @@ ORDER BY name ASC
 
 ### Create Sample Graph
 ```
+match (n) DETACH delete n
 CREATE
   (home:Page {name:'Home'}),
   (about:Page {name:'About'}),
@@ -213,6 +226,8 @@ CREATE
 
 - Create Graph
 ```
+CALL gds.graph.list
+CALL gds.graph.drop("myGraphPageRank")
 CALL gds.graph.create(
   'myGraphPageRank',
   'Page',
